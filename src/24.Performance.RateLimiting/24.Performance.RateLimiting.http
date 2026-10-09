@@ -1,0 +1,17 @@
+@host = http://localhost:5024
+
+### 1. Fixed Window (спробуйте надіслати 4 рази поспіль швидко)
+GET {{host}}/api/fixed
+Accept: application/json
+
+### 2. Sliding Window (ковзне вікно)
+GET {{host}}/api/sliding
+Accept: application/json
+
+### 3. Token Bucket (кошик маркерів)
+GET {{host}}/api/token
+Accept: application/json
+
+### 4. Ендпоінт без лімітів
+GET {{host}}/api/unlimited
+Accept: application/json

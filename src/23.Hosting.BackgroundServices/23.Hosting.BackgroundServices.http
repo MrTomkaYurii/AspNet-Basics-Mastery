@@ -1,0 +1,13 @@
+@host = http://localhost:5023
+
+### 1. Перевірити головну сторінку
+GET {{host}}/
+
+### 2. Поставити задачу в асинхронну чергу (202 Accepted)
+POST {{host}}/queue/job?name=Формування_PDF_звіту
+
+### 3. Поставити іншу задачу в чергу
+POST {{host}}/queue/job?name=Синхронізація_складу
+
+### 4. Документація Scalar
+GET {{host}}/scalar

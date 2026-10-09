@@ -23,37 +23,63 @@ public sealed class InMemoryCatalog : ICatalog
         new(3, "USB-C хаб", 39m, 3),
     ];
 
+    private readonly Lock _gate = new();
     private int _nextId = 3;
 
     public IReadOnlyList<Category> GetCategories() => _categories;
     public Category? FindCategory(int id) => _categories.FirstOrDefault(c => c.Id == id);
 
-    public IReadOnlyList<Product> GetProducts() => _products;
-    public Product? FindProduct(int id) => _products.FirstOrDefault(p => p.Id == id);
+    public IReadOnlyList<Product> GetProducts()
+    {
+        lock (_gate)
+        {
+            return [.. _products];
+        }
+    }
+
+    public Product? FindProduct(int id)
+    {
+        lock (_gate)
+        {
+            return _products.FirstOrDefault(p => p.Id == id);
+        }
+    }
 
     public Product Add(ProductInput input)
     {
-        var product = new Product(++_nextId, input.Name, input.Price, input.CategoryId);
-        _products.Add(product);
-        return product;
+        lock (_gate)
+        {
+            var product = new Product(++_nextId, input.Name, input.Price, input.CategoryId);
+            _products.Add(product);
+            return product;
+        }
     }
 
     public Product? Replace(int id, ProductInput input)
     {
-        var index = _products.FindIndex(p => p.Id == id);
-        if (index < 0)
-            return null;
-
-        var updated = _products[index] with
+        lock (_gate)
         {
-            Name = input.Name,
-            Price = input.Price,
-            CategoryId = input.CategoryId,
-            Version = _products[index].Version + 1,
-        };
-        _products[index] = updated;
-        return updated;
+            var index = _products.FindIndex(p => p.Id == id);
+            if (index < 0)
+                return null;
+
+            var updated = _products[index] with
+            {
+                Name = input.Name,
+                Price = input.Price,
+                CategoryId = input.CategoryId,
+                Version = _products[index].Version + 1,
+            };
+            _products[index] = updated;
+            return updated;
+        }
     }
 
-    public bool Delete(int id) => _products.RemoveAll(p => p.Id == id) > 0;
+    public bool Delete(int id)
+    {
+        lock (_gate)
+        {
+            return _products.RemoveAll(p => p.Id == id) > 0;
+        }
+    }
 }

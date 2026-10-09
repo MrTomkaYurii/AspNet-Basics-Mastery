@@ -119,11 +119,13 @@ app.Run();
 |---|---|
 | [`09.Routing.Endpoints`](src/09.Routing.Endpoints) | Endpoint routing, шаблони й обмеження маршрутів, route vs query, `LinkGenerator`, місце маршрутизації в конвеєрі |
 
-### Модуль 5. Web API на контролерах
+### Модуль 5. Web API: два підходи (MVC та Minimal APIs)
 | Проект | Тема |
 |---|---|
 | [`10.Mvc.Crud`](src/10.Mvc.Crud) | Повний CRUD на контролері, `ActionResult<T>`, `CreatedAtAction`, коди відповідей, `Location` |
+| [`10.MinimalApi.Crud`](src/10.MinimalApi.Crud) | CRUD на Minimal APIs у .NET 10: `MapGroup`, `TypedResults`, автоматична генерація OpenAPI без атрибутів |
 | [`11.Mvc.BindingAndValidation`](src/11.Mvc.BindingAndValidation) | Джерела прив'язки (`[FromRoute]`/`[FromQuery]`/`[FromHeader]`/`[FromBody]`), авто-`400`, `ModelState` |
+| [`11.MinimalApi.BindingAndValidation`](src/11.MinimalApi.BindingAndValidation) | Прив'язка у Minimal APIs (`[AsParameters]`), валідація моделі через Endpoint Filters (`IEndpointFilter`) |
 
 ### Модуль 6. MVC / контролери (глибше)
 | Проект | Тема |
@@ -151,15 +153,22 @@ app.Run();
 |---|---|
 | [`21.Security.AuthBasics`](src/21.Security.AuthBasics) | Автентифікація vs авторизація, схеми, JWT bearer, `[Authorize]`, policy / role, місце auth у конвеєрі |
 
+### Модуль 10. Виробнича надійність та продуктивність
+| Проект | Тема |
+|---|---|
+| [`22.Diagnostics.HealthChecks`](src/22.Diagnostics.HealthChecks) | Health Checks: Liveness (`/health/live`) та Readiness (`/health/ready`) проби для Kubernetes, власні `IHealthCheck`, JSON-діагностика |
+| [`23.Hosting.BackgroundServices`](src/23.Hosting.BackgroundServices) | Фонові процеси: `BackgroundService`, `PeriodicTimer`, черги задач на `System.Threading.Channels`, патерн безпечного виклику `Scoped` сервісів |
+| [`24.Performance.RateLimiting`](src/24.Performance.RateLimiting) | Обмеження частоти (Rate Limiting): Fixed Window, Sliding Window, Token Bucket, обробка `429 Too Many Requests` та `Retry-After` |
+
 ---
 
 ## Рекомендований порядок
 
 1. **Модуль 1–2** дають головну ідею: *ASP.NET Core — це конвеєр middleware поверх хоста*.
 2. **Модуль 4** показує, що маршрутизація — теж middleware.
-3. **Модуль 5–6** — Web API на контролерах: CRUD, прив'язка й валідація, розбір `[ApiController]`, фільтри.
+3. **Модуль 5–6** — Web API: порівняння Minimal APIs та контролерів, CRUD, валідація, фільтри.
 4. **Модуль 7** — семантика REST на вже знайомому API.
-5. **Модулі 3, 8, 9** можна вставляти після Модуля 1 у будь-якому місці.
+5. **Модулі 3, 8, 9, 10** — сервіси, діагностика, фонові задачі, безпека та ліміти навантаження (можна опрацьовувати в будь-якому порядку після Модуля 1).
 
 ## Корисні посилання
 

@@ -10,7 +10,9 @@
     <Project Path="src/07.DependencyInjection.Lifetimes/07.DependencyInjection.Lifetimes.csproj" />
     <Project Path="src/08.Configuration.Options/08.Configuration.Options.csproj" />
     <Project Path="src/09.Routing.Endpoints/09.Routing.Endpoints.csproj" />
+    <Project Path="src/10.MinimalApi.Crud/10.MinimalApi.Crud.csproj" />
     <Project Path="src/10.Mvc.Crud/10.Mvc.Crud.csproj" />
+    <Project Path="src/11.MinimalApi.BindingAndValidation/11.MinimalApi.BindingAndValidation.csproj" />
     <Project Path="src/11.Mvc.BindingAndValidation/11.Mvc.BindingAndValidation.csproj" />
     <Project Path="src/12.Mvc.Controllers/12.Mvc.Controllers.csproj" />
     <Project Path="src/13.Mvc.Filters/13.Mvc.Filters.csproj" />
@@ -21,8 +23,51 @@
     <Project Path="src/18.Rest.Hypermedia/18.Rest.Hypermedia.csproj" />
     <Project Path="src/19.OpenApi.Swagger/19.OpenApi.Swagger.csproj" />
     <Project Path="src/21.Security.AuthBasics/21.Security.AuthBasics.csproj" />
+    <Project Path="src/22.Diagnostics.HealthChecks/22.Diagnostics.HealthChecks.csproj" />
+    <Project Path="src/23.Hosting.BackgroundServices/23.Hosting.BackgroundServices.csproj" />
+    <Project Path="src/24.Performance.RateLimiting/24.Performance.RateLimiting.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/20.Testing/20.Testing.csproj" />
+  </Folder>
+  <Folder Name="/guides/">
+    <File Path="guides/README.md" />
+    <File Path="guides/00.Common.md" />
+    <File Path="guides/01.Hosting.Minimal.md" />
+    <File Path="guides/02.Hosting.ServersAndEnvironment.md" />
+    <File Path="guides/03.Pipeline.FromScratch.md" />
+    <File Path="guides/04.Pipeline.CustomMiddleware.md" />
+    <File Path="guides/05.Pipeline.CrossCutting.md" />
+    <File Path="guides/06.Pipeline.Branching.md" />
+    <File Path="guides/07.DependencyInjection.Lifetimes.md" />
+    <File Path="guides/08.Configuration.Options.md" />
+    <File Path="guides/09.Routing.Endpoints.md" />
+    <File Path="guides/10.MinimalApi.Crud.md" />
+    <File Path="guides/10.Mvc.Crud.md" />
+    <File Path="guides/11.MinimalApi.BindingAndValidation.md" />
+    <File Path="guides/11.Mvc.BindingAndValidation.md" />
+    <File Path="guides/12.Mvc.Controllers.md" />
+    <File Path="guides/13.Mvc.Filters.md" />
+    <File Path="guides/14.Rest.ResourcesAndVerbs.md" />
+    <File Path="guides/15.Rest.Representations.md" />
+    <File Path="guides/16.Rest.CollectionsAndErrors.md" />
+    <File Path="guides/17.Rest.Versioning.md" />
+    <File Path="guides/18.Rest.Hypermedia.md" />
+    <File Path="guides/19.OpenApi.Swagger.md" />
+    <File Path="guides/20.Testing.md" />
+    <File Path="guides/21.Security.AuthBasics.md" />
+    <File Path="guides/22.Diagnostics.HealthChecks.md" />
+    <File Path="guides/23.Hosting.BackgroundServices.md" />
+    <File Path="guides/24.Performance.RateLimiting.md" />
+  </Folder>
+  <Folder Name="/docs/">
+    <File Path="docs/Конспект — Основи ASP.NET Core.md" />
+    <File Path="docs/Основи ASP.NET Core — лекція.pdf" />
+    <File Path="docs/Основи ASP.NET Core — лекція.pptx" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="global.json" />
   </Folder>
 </Solution>

@@ -1,0 +1,48 @@
+@host = http://localhost:5111
+
+### 1. Маршрут (FromRoute)
+GET {{host}}/bind/route/42
+Accept: application/json
+
+### 2. Query string (FromQuery: рядки, масиви)
+GET {{host}}/bind/query?q=phone&tags=sale&tags=electronics&page=2
+Accept: application/json
+
+### 3. Заголовок (FromHeader)
+GET {{host}}/bind/header
+X-Tenant: Enterprise-Alpha
+Accept: application/json
+
+### 4. Упаковка параметрів ([AsParameters])
+GET {{host}}/bind/search/3?term=laptop&pageSize=50
+Accept: application/json
+
+### 5. Валідація: Успішний запит (200 OK)
+POST {{host}}/validate
+Content-Type: application/json
+
+{
+  "name": "Ноутбук Dell XPS",
+  "price": 1450.00,
+  "categoryId": 1
+}
+
+### 6. Валідація: Помилка DataAnnotations (400 ValidationProblem через EndpointFilter)
+POST {{host}}/validate
+Content-Type: application/json
+
+{
+  "name": "x",
+  "price": -5,
+  "categoryId": 0
+}
+
+### 7. Валідація: Помилка бізнес-правила (немає такої категорії)
+POST {{host}}/validate
+Content-Type: application/json
+
+{
+  "name": "Монітор 4K",
+  "price": 400.00,
+  "categoryId": 999
+}

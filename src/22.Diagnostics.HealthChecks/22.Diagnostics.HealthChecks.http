@@ -1,0 +1,31 @@
+@host = http://localhost:5022
+
+### 1. Перевірка Liveness (чи живий процес)
+GET {{host}}/health/live
+Accept: application/json
+
+### 2. Перевірка Readiness (чи готові залежності)
+GET {{host}}/health/ready
+Accept: application/json
+
+### 3. Повний звіт усіх перевірок
+GET {{host}}/healthz
+Accept: application/json
+
+### 4. Симуляція збою залежності
+POST {{host}}/simulate/fail
+
+### 5. Перевірка Readiness після збою (503 Service Unavailable + Unhealthy)
+GET {{host}}/health/ready
+Accept: application/json
+
+### 6. Liveness залишається зеленим (процес працює, контейнер не треба перезапускати)
+GET {{host}}/health/live
+Accept: application/json
+
+### 7. Відновлення нормальної роботи
+POST {{host}}/simulate/restore
+
+### 8. Перевірка після відновлення (200 OK)
+GET {{host}}/health/ready
+Accept: application/json

@@ -59,7 +59,7 @@ app.Use(async (context, next) =>
 {
     await next(context);
 
-    if (context.Response.StatusCode == StatusCodes.Status404NotFound)
+    if (!context.Response.HasStarted && context.Response.StatusCode == StatusCodes.Status404NotFound)
         await context.Response.WriteAsync(" (дописано в middleware #3)");
 });
 

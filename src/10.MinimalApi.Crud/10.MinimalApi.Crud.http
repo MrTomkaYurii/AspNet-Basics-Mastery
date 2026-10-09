@@ -1,0 +1,49 @@
+@host = http://localhost:5110
+
+### 1. Отримати всі товари
+GET {{host}}/products
+Accept: application/json
+
+### 2. Отримати товар за Id
+GET {{host}}/products/1
+Accept: application/json
+
+### 3. Товар, якого немає (404)
+GET {{host}}/products/999
+Accept: application/json
+
+### 4. Створити товар (201 Created + Location)
+POST {{host}}/products
+Content-Type: application/json
+
+{
+  "name": "Механічна клавіатура Keychron",
+  "price": 119.50,
+  "categoryId": 2
+}
+
+### 5. Створити товар з неіснуючою категорією (400)
+POST {{host}}/products
+Content-Type: application/json
+
+{
+  "name": "Невідомий девайс",
+  "price": 10.00,
+  "categoryId": 999
+}
+
+### 6. Оновити товар (200 OK)
+PUT {{host}}/products/1
+Content-Type: application/json
+
+{
+  "name": "ThinkPad X1 Carbon Gen 12",
+  "price": 1999.00,
+  "categoryId": 1
+}
+
+### 7. Видалити товар (204 No Content)
+DELETE {{host}}/products/3
+
+### 8. Повторне видалення — теж 204 (ідемпотентність)
+DELETE {{host}}/products/3
