@@ -1,4 +1,4 @@
-# AspNet-Basics — курс «Основи ASP.NET Core»
+# AspNet-Basics-Mastery-Mastery — курс «Основи ASP.NET Core»
 
 Навчальний solution: від «голого» веб-застосунку до повноцінного REST API.
 Кожен приклад — **окремий проект**, який запускається самостійно (`dotnet run`),
